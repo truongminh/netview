@@ -1,0 +1,16 @@
+
+admin-app-list {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+admin-app-list wl-card {
+    width: 200px;
+    padding: 20px;
+    margin: 10px;
+}
+
+body {
+    font-family: Roboto Condensed;
+}
