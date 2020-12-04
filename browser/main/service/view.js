@@ -1,4 +1,8 @@
-const { BrowserWindow } = require('electron');
+/**
+ * @typedef {import('../../share/model').App} App
+ */
+
+const { BrowserWindow, screen: ElectronScreen } = require('electron');
 
 /** @type {Map<string, BrowserWindow>} */
 const app_browsers = new Map();
@@ -9,10 +13,12 @@ const app_browsers = new Map();
  */
 function OpenApp(app) {
     console.log('open', app);
-    const win = new BrowserWindow({
+    /** @type {import('electron').BrowserWindowConstructorOptions} */
+    const options = {
         width: 800,
         height: 600,
-    });
+    };
+    const win = new BrowserWindow(options);
     win.loadURL(app.url);
     app_browsers.set(app.id, win);
     win.once('close', () => {

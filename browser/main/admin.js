@@ -1,5 +1,5 @@
-const { BrowserWindow } = require("electron")
-const path = require('path')
+const { BrowserWindow } = require("electron");
+const path = require('path');
 
 function CreateAdminWindow() {
     // Create the browser window.
@@ -9,11 +9,10 @@ function CreateAdminWindow() {
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
         }
-    })
+    });
 
     // and load the index.html of the app.
-    mainWindow.loadFile('../admin/index.html')
-
+    mainWindow.loadFile('../admin/index.html');
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
 }

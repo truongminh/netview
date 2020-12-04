@@ -21,7 +21,15 @@ export class AppEditElement extends HTMLElement {
             <wl-textfield name="name" value="${this.app.name}" label="Name"></wl-textfield>
             <wl-textfield name="url" value="${this.app.url}" label="URL"></wl-textfield>
             <br>
-            <wl-label><wl-switch name="enabled" ${this.app.enabled ? 'checked' : ''}></wl-switch>Auto start</wl-label>
+            <wl-label>
+                <wl-switch name="enabled" ${this.app.enabled ? 'checked' : ''}></wl-switch>
+                Auto start
+            </wl-label>
+            <br>
+            <wl-select label="Screen" name="screen" value="${this.app.screen}">
+                <option value="primary">Primary</option>
+                <option value="secondary">Secondary</option>
+            </wl-select>
             <br>
             <br>
             <wl-button action="save" style="padding: 6px; margin: 10px;"><wl-icon>done</wl-icon>Save&nbsp;</wl-button>
@@ -33,7 +41,8 @@ export class AppEditElement extends HTMLElement {
             const name = this.querySelector('[name=name]').value;
             const url = this.querySelector('[name=url]').value;
             const enabled = this.querySelector('[name=enabled]').checked;
-            await AppService.Update(this.app, { name, url, enabled });
+            const screen = this.querySelector('[name=screen]').value;
+            await AppService.Update(this.app, { name, url, enabled, screen });
             location.href = '#';
         });
         this.querySelector('[action=cancel]').addEventListener('click', async e => {

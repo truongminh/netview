@@ -3,18 +3,32 @@
  */
 
 
-/** @type {App[]} */
-const apps = [{
-    id: '0',
-    name: 'Google',
-    url: 'https://google.com'
-}, {
-    id: '1',
-    name: 'Google',
-    url: 'https://google.com'
-}];
-
 const rand = require('./lib/rand');
+const config = require('./config');
+const { APPS_FILE } = require('../../share/setting');
+
+/** @type {App[]} */
+const apps = [];
+
+(function () {
+    const str = config.GetItem(APPS_FILE);
+    if (str) {
+        try {
+            const value = JSON.parse(str);
+            for (const a of value) {
+                apps.push(a);
+            }
+        } catch (e) {
+            console.log(e);
+            // storage corrupt
+        }
+    }
+})();
+
+function save() {
+    const str = JSON.stringify(apps, null, '  ');
+    config.SetItem(APPS_FILE, str);
+}
 
 function List() {
     return apps;
@@ -34,6 +48,10 @@ function Get(id) {
     return apps.find(app => app.id === id);
 }
 
+/** 
+ * @param {string} app_id
+ * @param {Partial<App>} value
+ */
 function Update(app_id, value) {
     const app = Get(app_id);
     if (!app) {
@@ -42,6 +60,8 @@ function Update(app_id, value) {
     app.name = value.name;
     app.url = value.url;
     app.enabled = value.enabled;
+    app.screen = value.screen;
+    save();
     return 1;
 }
 
@@ -49,6 +69,7 @@ function Delete(id) {
     for (let i = 0; i < apps.length; i++) {
         if (apps[i].id === id) {
             apps.splice(i, 1);
+            save();
             return 1;
         }
     }
