@@ -10,11 +10,11 @@ function CreateAdminWindow() {
             preload: path.join(__dirname, 'preload.js'),
         }
     });
-
-    // and load the index.html of the app.
-    mainWindow.loadFile('../admin/index.html');
+    const view = path.join(__dirname, '../admin/index.html');
+    mainWindow.loadFile(view);
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
+    return mainWindow;
 }
 
 module.exports = {

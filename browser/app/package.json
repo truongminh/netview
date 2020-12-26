@@ -1,0 +1,8 @@
+{
+  "name": "netview",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main/main.js",
+  "author": "GitHub",
+  "license": "CC0-1.0"
+}

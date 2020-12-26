@@ -1,22 +1,15 @@
 {
-  "name": "electron-quick-start",
+  "name": "netview",
   "version": "1.0.0",
   "description": "A minimal Electron application",
-  "main": "main.js",
   "scripts": {
-    "start": "electron main/main.js"
+    "start": "electron app/main/main.js",
+    "build": "node tool/build.js"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^10.1.5"
+    "electron": "^10.1.5",
+    "electron-builder": "^22.9.1"
   }
 }
