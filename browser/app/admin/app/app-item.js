@@ -21,6 +21,7 @@ export class AppItem extends HTMLElement {
           <div>NAME: ${this.app.name}</div>
           <div>URL: ${this.app.url}</div>
           <div>AUTOSTART: ${this.app.enabled || false}</div>
+          <div>FULLSCREEN: ${this.app.fullscreen || false}</div>
           <div>SCREEN: ${this.app.screen || 'primary'}</div>
           <div>STATUS: ${this.app.status}</div>
           <div>

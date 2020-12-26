@@ -61,6 +61,7 @@ function Update(app_id, value) {
     app.url = value.url;
     app.enabled = value.enabled;
     app.screen = value.screen;
+    app.fullscreen = value.fullscreen;
     save();
     return 1;
 }

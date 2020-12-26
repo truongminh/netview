@@ -10,6 +10,7 @@ function CreateAdminWindow() {
             preload: path.join(__dirname, 'preload.js'),
         }
     });
+    mainWindow.setMenuBarVisibility(false);
     const view = path.join(__dirname, '../admin/index.html');
     mainWindow.loadFile(view);
     // Open the DevTools.

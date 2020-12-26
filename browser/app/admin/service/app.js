@@ -22,6 +22,7 @@ function Get(app_id) {
 
 /** @returns {Promise<App>} */
 function Update(app, value) {
+    console.log(value);
     return ipcRenderer.invoke('/app/update', app.id, value);
 }
 

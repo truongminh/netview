@@ -26,6 +26,11 @@ export class AppEditElement extends HTMLElement {
                 Auto start
             </wl-label>
             <br>
+            <wl-label>
+                <wl-switch name="fullscreen" ${this.app.fullscreen ? 'checked' : ''}></wl-switch>
+                Fullscreen
+            </wl-label>
+            <br>
             <wl-select label="Screen" name="screen" value="${this.app.screen}">
                 <option value="primary">Primary</option>
                 <option value="secondary">Secondary</option>
@@ -42,7 +47,8 @@ export class AppEditElement extends HTMLElement {
             const url = this.querySelector('[name=url]').value;
             const enabled = this.querySelector('[name=enabled]').checked;
             const screen = this.querySelector('[name=screen]').value;
-            await AppService.Update(this.app, { name, url, enabled, screen });
+            const fullscreen = this.querySelector('[name=fullscreen]').checked;
+            await AppService.Update(this.app, { name, url, enabled, screen, fullscreen });
             location.href = '#';
         });
         this.querySelector('[action=cancel]').addEventListener('click', async e => {
